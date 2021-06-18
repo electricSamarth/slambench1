@@ -683,7 +683,7 @@ void Kfusion::languageSpecificConstructor() {
 }
 
 Kfusion::~Kfusion() {
-	cudaThreadSynchronize();
+	cudaDeviceSynchronize();
 	volume.release();
 	printCUDAError();
 }
@@ -754,8 +754,7 @@ bool Kfusion::preprocessing(const ushort * inputDepth, const __device_builtin__u
 
     //Image<uint16_t, Ref> myDepthImage(s,(void*)inputDepth);
     Image<uint16_t, HostDevice> myDepthImage(s);
-    cudaMemcpy(myDepthImage.data(), inputDepth, s.x * s.y * sizeof(ushort),
-	    cudaMemcpyHostToHost);
+    memcpy(myDepthImage.data(), inputDepth, s.x * s.y * sizeof(ushort));
     TICK("mm2meters");
     if(computationSize.x == myDepthImage.size.x)
 	mm2metersKernel<0><<<divup(rawDepth.size, imageBlock), imageBlock>>>(rawDepth, myDepthImage);

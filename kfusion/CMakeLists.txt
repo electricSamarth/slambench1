@@ -21,7 +21,7 @@ include_directories(./include ${TOON_INCLUDE_PATH} ./thirdparty)
 
 
 if (CUDA_FOUND) 
- SET( CUDA_PROPAGATE_HOST_FLAGS OFF )
+ SET( CUDA_PROPAGATE_HOST_FLAGS ON )
 endif(CUDA_FOUND)
 
  # ---- PREPARE COMMON DEPENDENCIES  ------------ 
