@@ -1,4 +1,5 @@
 # README #
+Modified it for my need :P
 
 SLAMBench Release Candidate 1.2 [![Build Status](https://travis-ci.org/pamela-project/slambench.svg?branch=master)](https://travis-ci.org/pamela-project/slambench)
 
